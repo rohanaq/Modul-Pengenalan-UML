@@ -58,7 +58,8 @@ Contoh: `ssh -X b2@10.151.36.202`
 **a. Membuat switch** <br>
 `uml_switch –unixnamaswitch> /dev/null < /dev/null &` <br>
 **b. Membuat router dan klien** <br>
-`xterm –T NAMADEVICE –e linux ubd0=NAMADEVICE,jarkom umid=NAMADEVICE eth0=daemon,,,NAMASWITCH mem=96M &` <br>
+`xterm –T NAMADEVICE –e linux ubd0=NAMADEVICE,jarkom umid=NAMADEVICE eth0=daemon,,,NAMASWITCH mem=96M &` <br><br>
+
 **Keterangan:**
 - Sintaks untuk membuat router dan klien hampir sama, yang membedakan adalah jumlah eth-nya, eth pada router biasanya lebih dari 1.
 - File **jarkom** adalah iso UML yang digunakan.
