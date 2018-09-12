@@ -197,7 +197,7 @@ gateway 192.168.0.1
 ![UML Ping](/images/15.PNG) <br>
 
 
-14. Export proxy pada setiap UML dengan sintaks seperti di bawah ini:
+14. Export proxy pada setiap UML dengan sintaks seperti di bawah ini: <br>
 `export http_proxy=”http://[username-vpn]:[password]@proxy.its.ac.id:8080”` <br>
 `export https_proxy=”http://[username-vpn]:[password]@proxy.its.ac.id:8080”` <br>
 `export ftp_proxy=”http://[username-vpn]:[password]@proxy.its.ac.id:8080”` <br>
