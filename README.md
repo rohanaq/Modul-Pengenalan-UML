@@ -14,15 +14,15 @@ Silahkan mendownload dari link berikut -> https://sourceforge.net/projects/xming
 - Jalankan Xming terlebih dahulu kemudian jalankan PuTTY.
 ![PuTTY](/images/1.PNG) <br>
 
-- Isikan **Host Name** dengan IP sesuai pembagian masing-masing kelas:
+- Isikan **Host Name** dengan IP sesuai pembagian masing-masing kelas:<br>
 **Kelas A = 10.151.36.201 <br>
 Kelas B = 10.151.36.202 <br>
 Kelas C = 10.151.36.203 <br>
 Kelas D = 10.151.36.204 <br>
-Kelas E = 10.151.36.205**
+Kelas E = 10.151.36.205 <br>**
 ![PuTTY IP](/images/2.png) <br>
 
-- Kemudian pilih tab **SSH** di bagian **Connection** dan pilih **X11**, lalu centang **Enable X11 forwarding**
+- Kemudian pilih tab **SSH** di bagian **Connection** dan pilih **X11**, lalu centang **Enable X11 forwarding**<br>
 ![PuTTY X11](/images/3.PNG) <br>
 
 - Kemudian pilih Open. Jika muncul gambar seperti di bawah:
@@ -88,7 +88,7 @@ xterm -T KARI -e linux ubd0=KARI,jarkom umid=KARI eth0=daemon,,,switch2 mem=96M 
 5. Jalankan script **topologi.sh** dengan perintah `bash topologi.sh`
 ![UML Login](/images/10.PNG) <br>
 
-6. Setelah muncul gambar seperti di atas, login pada masing-masing UML dengan menggunakan **Username = root** dan **Password = praktikum**.
+6. Setelah muncul gambar seperti di atas, login pada masing-masing UML dengan menggunakan **Username = root** dan **Password = praktikum**. <br>
 ![UML Login Success](/images/11.PNG) <br>
 
 7. Pada router **BAKSO** lakukan setting sysctl dengan mengetikkan perintah `nano /etc/sysctl.conf`
