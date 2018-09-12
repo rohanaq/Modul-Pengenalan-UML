@@ -25,7 +25,7 @@ Kelas E = 10.151.36.205 <br>**
 - Kemudian pilih tab **SSH** di bagian **Connection** dan pilih **X11**, lalu centang **Enable X11 forwarding**<br>
 ![PuTTY X11](/images/3.PNG) <br>
 
-- Kemudian pilih Open. Jika muncul gambar seperti di bawah:
+- Kemudian pilih Open. Jika muncul gambar seperti di bawah: <br>
 ![PuTTY Warning](/images/4.PNG) <br>
 Klik **Yes** maka kemudian akan tampil window untuk login.
 ![PuTTY Login](/images/5.PNG) <br>
