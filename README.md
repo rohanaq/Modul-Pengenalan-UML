@@ -30,7 +30,8 @@ Kelas E = 10.151.36.205 <br>**
 Klik **Yes** maka kemudian akan tampil window untuk login.
 ![PuTTY Login](/images/5.PNG) <br>
 
-- Login dengan username **[nama kelompok]** dan password **praktikum**. Contoh:
+- Login dengan username **[nama kelompok]** dan password **praktikum**. <br>
+Contoh: <br>
 **Username -> b2** <br>
 **Password -> praktikum** <br>
 Jika berhasil maka akan muncul gambar seperti di bawah ini:
