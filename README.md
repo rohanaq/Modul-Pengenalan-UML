@@ -52,11 +52,13 @@ Contoh: `ssh -X b2@10.151.36.202`
 ![Topologi](/images/8.PNG) <br>
 1. Setelah login, buat file script dengan ekstensi **.sh** yang akan digunakan untuk menyimpan script membuat **router, switch,** dan **klien**. Misalkan kita membuat file bernama **topologi.sh**.
 
+
 2. Ketikkan `nano topologi.sh`
+
 
 3. Sintaks yang digunakan adalah sebagai berikut: <br>
 **a. Membuat switch** <br>
-`uml_switch –unixnamaswitch> /dev/null < /dev/null &` <br>
+`uml_switch –unix NAMASWITCH > /dev/null < /dev/null &` <br>
 **b. Membuat router dan klien** <br>
 `xterm –T NAMADEVICE –e linux ubd0=NAMADEVICE,jarkom umid=NAMADEVICE eth0=daemon,,,NAMASWITCH mem=96M &` <br><br>
 
@@ -65,6 +67,7 @@ Contoh: `ssh -X b2@10.151.36.202`
 - File **jarkom** adalah iso UML yang digunakan.
 - Pembuatan jumlah router, switch, klien, dan banyaknya eth disesuaikan 
 dengan topologi yang diminta.
+
 
 4. Untuk topologi sesuai yang ada pada gambar, maka sintaks untuk file **topologi.sh** adalah sebagai berikut:
 ![Script Topologi](/images/9.PNG) <br>
@@ -87,17 +90,22 @@ xterm -T KARI -e linux ubd0=KARI,jarkom umid=KARI eth0=daemon,,,switch2 mem=96M 
 ```
 **Keterangan:** Jangan lupa mengubah _**ip_tuntap_tiap_kelompok**_ terlebih dahulu dan sesuaikan dengan pembagian tiap kelompok masing-masing.
 
+
 5. Jalankan script **topologi.sh** dengan perintah `bash topologi.sh`
 ![UML Login](/images/10.PNG) <br>
+
 
 6. Setelah muncul gambar seperti di atas, login pada masing-masing UML dengan menggunakan **Username = root** dan **Password = praktikum**. <br>
 ![UML Login Success](/images/11.PNG) <br>
 
+
 7. Pada router **BAKSO** lakukan setting sysctl dengan mengetikkan perintah `nano /etc/sysctl.conf`
+
 
 8. Hilangkan tanda pagar (#) pada bagian `net.ipv4.ip_forward=1`
 ![UML Sysctl](/images/12.PNG) <br>
 Lalu ketikka `sysctl -p` untuk mengaktifkan perubahan yang ada. Dengan mengaktifkan fungsi _**IP Forward**_ ini maka Linux nantinya dapat menentukan jalur mana yang dipilih untuk mencapai jaringan tujuan.
+
 
 9. Setting IP pada setiap UML dengan mengetikkan `nano /etc/network/interfaces` Lalu setting IPnya sebagai berikut:<br>
 **BAKSO (Sebagai Router)**
@@ -168,10 +176,13 @@ gateway 192.168.0.1
 - **Gateway:** Jalur pada jaringan yang harus dilewati paket-paket data untuk dapat masuk ke jaringan yang lain.
 - **DMZ:** DMZ adalah kependekan dari _Demilitarized Zone_, suatu area yang digunakan untuk berinteraksi dengan pihak luar. Di dalam jaringan komputer, DMZ merupakan suatu sub network yang terpisah dari sub network internal untuk keperluan keamanan.
 
+
 10. Restart network dengan mengetikkan `service networking restart` atau `/etc/init.d/networking restart` di setiap UML.
+
 
 11. Coba cek IP pada setiap UML dengan mengetikkan `ifconfig`. Jika sudah mendapatkan IP seperti gambar di bawah, maka setting IP yang kalian lakukan sudah benar.
 ![UML IP](/images/13.PNG) <br>
+
 
 12. Topologi yang dibuat sudah bisa berjalan secara lokal, tetapi kita belum bisa mengakses jaringan keluar. Ketikkan **`iptables –t nat –A POSTROUTING –o eth0 –j MASQUERADE –s 192.168.0.0/16`** pada router BAKSO.
 ![UML Nat](/images/14.PNG) <br>
@@ -181,15 +192,19 @@ gateway 192.168.0.1
 - **Masquerade:** Digunakan untuk menyamarkan paket, misal mengganti alamat pengirim dengan alamat router.
 - **-s (Source Address):** Spesifikasi pada source. Address bisa berupa nama jaringan, nama host, atau alamat IP.
 
+
 13. Coba tes di semua UML dengan melakukan ping ke jaringan luar. Sebagai contoh coba `ping google.com` untuk mengecek apakah setting yang dilakukan sudah benar atau belum.
 ![UML Ping](/images/15.PNG) <br>
+
 
 14. Export proxy pada setiap UML dengan sintaks seperti di bawah ini:
 `export http_proxy=”http://[username-vpn]:[password]@proxy.its.ac.id:8080”` <br>
 `export https_proxy=”http://[username-vpn]:[password]@proxy.its.ac.id:8080”` <br>
 `export ftp_proxy=”http://[username-vpn]:[password]@proxy.its.ac.id:8080”` <br>
 
+
 15. Setelah itu, lakukan update pada setiap UML dengan mengetikkan `apt-get update`
+
 
 16. Terakhir, untuk mematikan UML **JANGAN langsung diclose**. Ketikkan `halt` pada setiap UML untuk mematikannya. Alternatif lain adalah dengan membuat script dengan ekstensi **.sh** supaya mempermudah serta mempercepat kalian untuk mematikannya. Sebagai contoh buat file bernama **bye.sh** dan tuliskan sintaks seperti di bawah ini:
 ![UML Bye](/images/16.PNG) <br>
