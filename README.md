@@ -54,11 +54,11 @@ Contoh: `ssh -X b2@10.151.36.202`
 
 2. Ketikkan `nano topologi.sh`
 
-3. Sintaks yang digunakan adalah sebagai berikut:
+3. Sintaks yang digunakan adalah sebagai berikut: <br>
 **a. Membuat switch** <br>
-`uml_switch –unixnamaswitch> /dev/null < /dev/null &`
+`uml_switch –unixnamaswitch> /dev/null < /dev/null &` <br>
 **b. Membuat router dan klien** <br>
-`xterm –T NAMADEVICE –e linux ubd0=NAMADEVICE,jarkom umid=NAMADEVICE eth0=daemon,,,NAMASWITCH mem=96M &`
+`xterm –T NAMADEVICE –e linux ubd0=NAMADEVICE,jarkom umid=NAMADEVICE eth0=daemon,,,NAMASWITCH mem=96M &` <br>
 **Keterangan:**
 - Sintaks untuk membuat router dan klien hampir sama, yang membedakan adalah jumlah eth-nya, eth pada router biasanya lebih dari 1.
 - File **jarkom** adalah iso UML yang digunakan.
