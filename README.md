@@ -107,7 +107,8 @@ xterm -T KARI -e linux ubd0=KARI,jarkom umid=KARI eth0=daemon,,,switch2 mem=96M 
 Lalu ketikka `sysctl -p` untuk mengaktifkan perubahan yang ada. Dengan mengaktifkan fungsi _**IP Forward**_ ini maka Linux nantinya dapat menentukan jalur mana yang dipilih untuk mencapai jaringan tujuan.
 
 
-9. Setting IP pada setiap UML dengan mengetikkan `nano /etc/network/interfaces` Lalu setting IPnya sebagai berikut:<br>
+9. Setting IP pada setiap UML dengan mengetikkan `nano /etc/network/interfaces` Lalu setting IPnya sebagai berikut:
+
 **BAKSO (Sebagai Router)**
 ```
 auto eth0
@@ -180,7 +181,7 @@ gateway 192.168.0.1
 10. Restart network dengan mengetikkan `service networking restart` atau `/etc/init.d/networking restart` di setiap UML.
 
 
-11. Coba cek IP pada setiap UML dengan mengetikkan `ifconfig`. Jika sudah mendapatkan IP seperti gambar di bawah, maka setting IP yang kalian lakukan sudah benar.
+11. Coba cek IP pada setiap UML dengan mengetikkan `ifconfig`. Jika sudah mendapatkan IP seperti gambar di bawah, maka setting IP yang kalian lakukan sudah benar.<br>
 ![UML IP](/images/13.PNG) <br>
 
 
