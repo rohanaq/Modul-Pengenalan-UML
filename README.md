@@ -78,15 +78,15 @@ uml_switch -unix switch1 > /dev/null < /dev/null &
 uml_switch -unix switch2 > /dev/null < /dev/null &
 
 # Router
-xterm -T BAKSO -e linux ubd0=BAKSO,jarkom umid=BAKSO eth0=tuntap,,,'ip_tuntap_tiap_kelompok' eth1=daemon,,,switch1 eth2=daemon,,,switch2 mem=96M &
+xterm -T BAKSO -e linux ubd0=BAKSO,jarkom umid=BAKSO eth0=tuntap,,,'ip_tuntap_tiap_kelompok' eth1=daemon,,,switch2 eth2=daemon,,,switch1 mem=96M &
 
 # DNS + Web Server
-xterm -T KATSU -e linux ubd0=KATSU,jarkom umid=KATSU eth0=daemon,,,switch1 mem=96M &
-xterm -T PIZZA -e linux ubd0=PIZZA,jarkom umid=PIZZA eth0=daemon,,,switch1 mem=96M &
+xterm -T KATSU -e linux ubd0=KATSU,jarkom umid=KATSU eth0=daemon,,,switch2 mem=96M &
+xterm -T PIZZA -e linux ubd0=PIZZA,jarkom umid=PIZZA eth0=daemon,,,switch2 mem=96M &
 
 # Klien
-xterm -T SOTO -e linux ubd0=SOTO,jarkom umid=SOTO eth0=daemon,,,switch2 mem=96M &
-xterm -T KARI -e linux ubd0=KARI,jarkom umid=KARI eth0=daemon,,,switch2 mem=96M &
+xterm -T SOTO -e linux ubd0=SOTO,jarkom umid=SOTO eth0=daemon,,,switch1 mem=96M &
+xterm -T KARI -e linux ubd0=KARI,jarkom umid=KARI eth0=daemon,,,switch1 mem=96M &
 ```
 **Keterangan:** Jangan lupa mengubah _**ip_tuntap_tiap_kelompok**_ terlebih dahulu dan sesuaikan dengan pembagian tiap kelompok masing-masing.
 
