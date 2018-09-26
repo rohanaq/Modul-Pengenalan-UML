@@ -78,15 +78,15 @@ uml_switch -unix switch1 > /dev/null < /dev/null &
 uml_switch -unix switch2 > /dev/null < /dev/null &
 
 # Router
-xterm -T BAKSO -e linux ubd0=BAKSO,jarkom umid=BAKSO eth0=tuntap,,,'ip_tuntap_tiap_kelompok' eth1=daemon,,,switch1 eth2=daemon,,,switch2 mem=96M &
+xterm -T BAKSO -e linux ubd0=BAKSO,jarkom umid=BAKSO eth0=tuntap,,,'ip_tuntap_tiap_kelompok' eth1=daemon,,,switch2 eth2=daemon,,,switch1 mem=96M &
 
 # DNS + Web Server
-xterm -T KATSU -e linux ubd0=KATSU,jarkom umid=KATSU eth0=daemon,,,switch1 mem=96M &
-xterm -T PIZZA -e linux ubd0=PIZZA,jarkom umid=PIZZA eth0=daemon,,,switch1 mem=96M &
+xterm -T KATSU -e linux ubd0=KATSU,jarkom umid=KATSU eth0=daemon,,,switch2 mem=96M &
+xterm -T PIZZA -e linux ubd0=PIZZA,jarkom umid=PIZZA eth0=daemon,,,switch2 mem=96M &
 
 # Klien
-xterm -T SOTO -e linux ubd0=SOTO,jarkom umid=SOTO eth0=daemon,,,switch2 mem=96M &
-xterm -T KARI -e linux ubd0=KARI,jarkom umid=KARI eth0=daemon,,,switch2 mem=96M &
+xterm -T SOTO -e linux ubd0=SOTO,jarkom umid=SOTO eth0=daemon,,,switch1 mem=96M &
+xterm -T KARI -e linux ubd0=KARI,jarkom umid=KARI eth0=daemon,,,switch1 mem=96M &
 ```
 **Keterangan:** Jangan lupa mengubah _**ip_tuntap_tiap_kelompok**_ terlebih dahulu dan sesuaikan dengan pembagian tiap kelompok masing-masing.
 
@@ -107,7 +107,8 @@ xterm -T KARI -e linux ubd0=KARI,jarkom umid=KARI eth0=daemon,,,switch2 mem=96M 
 Lalu ketikka `sysctl -p` untuk mengaktifkan perubahan yang ada. Dengan mengaktifkan fungsi _**IP Forward**_ ini maka Linux nantinya dapat menentukan jalur mana yang dipilih untuk mencapai jaringan tujuan.
 
 
-9. Setting IP pada setiap UML dengan mengetikkan `nano /etc/network/interfaces` Lalu setting IPnya sebagai berikut:<br>
+9. Setting IP pada setiap UML dengan mengetikkan `nano /etc/network/interfaces` Lalu setting IPnya sebagai berikut:
+
 **BAKSO (Sebagai Router)**
 ```
 auto eth0
@@ -180,7 +181,7 @@ gateway 192.168.0.1
 10. Restart network dengan mengetikkan `service networking restart` atau `/etc/init.d/networking restart` di setiap UML.
 
 
-11. Coba cek IP pada setiap UML dengan mengetikkan `ifconfig`. Jika sudah mendapatkan IP seperti gambar di bawah, maka setting IP yang kalian lakukan sudah benar.
+11. Coba cek IP pada setiap UML dengan mengetikkan `ifconfig`. Jika sudah mendapatkan IP seperti gambar di bawah, maka setting IP yang kalian lakukan sudah benar.<br>
 ![UML IP](/images/13.PNG) <br>
 
 
@@ -197,7 +198,7 @@ gateway 192.168.0.1
 ![UML Ping](/images/15.PNG) <br>
 
 
-14. Export proxy pada setiap UML dengan sintaks seperti di bawah ini:
+14. Export proxy pada setiap UML dengan sintaks seperti di bawah ini: <br>
 `export http_proxy=”http://[username-vpn]:[password]@proxy.its.ac.id:8080”` <br>
 `export https_proxy=”http://[username-vpn]:[password]@proxy.its.ac.id:8080”` <br>
 `export ftp_proxy=”http://[username-vpn]:[password]@proxy.its.ac.id:8080”` <br>
